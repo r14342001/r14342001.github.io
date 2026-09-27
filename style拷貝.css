@@ -1,0 +1,41 @@
+p {
+    font-family: Arial, sans-serif;
+    color:burlywood;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+    h1 {
+        font-family: Arial, sans-serif;
+        color:royalblue;
+        font-size: 24px;
+        line-height: 1.2;
+    }
+
+    #banner {
+        background-color: lightblue;
+        text-align: center;
+        height: 300px;
+        width: 1000px;
+    }
+    #nav {
+        background-color: lightgray;
+        width: 100px;
+        float: left;
+    }
+
+#content {
+        background-color: lightgreen;
+        width: 800px;
+    }
+
+#supporting {
+        background-color: lightyellow;
+        width: 100px;
+        float: left;
+    }
+
+    #footer {
+        background-color: darkgray;
+        text-align: center;
+    }
