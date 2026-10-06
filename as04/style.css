@@ -1,81 +1,864 @@
-body {
+/* ==================================================
+   RESET
+================================================== */
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-#wrapper {
-    width: 800px;
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: #111111;
+    color: #f3f1ec;
+
+    font-family:
+        "Noto Sans TC",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+::selection {
+    background: #f3f1ec;
+    color: #111111;
+}
+
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+
+    width: 100vw;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.72)
+        ),
+        url("images/phone-final.jpg")
+        center center / cover no-repeat;
+}
+
+
+.hero-content {
+    padding: 30px;
+}
+
+
+.eyebrow {
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.28em;
+
+    color: rgba(255,255,255,0.55);
+
+    margin-bottom: 30px;
+
+    text-transform: uppercase;
+}
+
+
+.hero h1 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(
+        4rem,
+        12vw,
+        11rem
+    );
+
+    font-weight: 400;
+
+    line-height: 0.82;
+
+    letter-spacing: -0.06em;
+
+    color: #f5f3ee;
+}
+
+
+.hero-subtitle {
+
+    margin-top: 45px;
+
+    font-size: clamp(
+        1rem,
+        2vw,
+        1.5rem
+    );
+
+    letter-spacing: 0.15em;
+
+    color: rgba(255,255,255,0.7);
+}
+
+
+.scroll-hint {
+
+    position: absolute;
+
+    bottom: 40px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.3em;
+
+    color: rgba(255,255,255,0.55);
+}
+
+
+.arrow {
+
+    font-size: 1.3rem;
+
+    animation:
+        arrowMove 1.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes arrowMove {
+
+    0% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+}
+
+
+
+/* ==================================================
+   STORY
+================================================== */
+
+.story {
+
+    width: 100vw;
+
+    display: flex;
+
+    position: relative;
+}
+
+
+
+/* ==================================================
+   STICKY IMAGE
+================================================== */
+
+.visual {
+
+    width: 55vw;
+
+    height: 100vh;
+
+    position: sticky;
+
+    top: 0;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background: #080808;
+}
+
+
+.image-wrapper {
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+.image-wrapper::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.05),
+            rgba(0,0,0,0.2)
+        );
+
+    pointer-events: none;
+}
+
+
+#storyImage {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+
+        opacity 0.7s ease,
+
+        transform 5s
+        cubic-bezier(
+            0.2,
+            0.7,
+            0.2,
+            1
+        );
+}
+
+
+#storyImage.changing {
+
+    opacity: 0;
+
+    transform: scale(1.04);
+}
+
+
+
+/* ==================================================
+   IMAGE LABEL
+================================================== */
+
+.image-label {
+
+    position: absolute;
+
+    left: 35px;
+
+    bottom: 35px;
+
+    display: flex;
+
+    gap: 18px;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.2em;
+
+    color: rgba(255,255,255,0.65);
+
+    z-index: 5;
+}
+
+
+.image-label span:first-child {
+
+    color: white;
+
+    font-weight: 500;
+}
+
+
+
+/* ==================================================
+   STORY TEXT
+================================================== */
+
+.story-text {
+
+    width: 45vw;
+
+    background: #151515;
+}
+
+
+.chapter {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    padding:
+        10vw
+        8vw;
+
+    position: relative;
+}
+
+
+.chapter-inner {
+
+    max-width: 520px;
+}
+
+
+.chapter-number {
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.25em;
+
+    color: rgba(255,255,255,0.4);
+
+    margin-bottom: 35px;
+}
+
+
+.chapter h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(
+        3rem,
+        5vw,
+        5.5rem
+    );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+
+    margin-bottom: 45px;
+}
+
+
+.chapter-main {
+
+    font-size: clamp(
+        1.4rem,
+        2.5vw,
+        2.2rem
+    );
+
+    line-height: 1.7;
+
+    font-weight: 300;
+
+    color: #e5e2db;
+}
+
+
+.chapter-description {
+
+    margin-top: 50px;
+
+    font-size: 0.95rem;
+
+    line-height: 2;
+
+    color: rgba(255,255,255,0.45);
+}
+
+
+
+/* ==================================================
+   ENDING
+================================================== */
+
+.ending {
+
+    width: 100vw;
+
+    height: 100vh;
+
+    min-height: 700px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 10vw;
+
+    background: #080808;
+
+    position: relative;
+}
+
+
+.ending-content {
+
+    max-width: 1000px;
+}
+
+
+.ending-label {
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.3em;
+
+    color: rgba(255,255,255,0.35);
+
+    margin-bottom: 50px;
+}
+
+
+.ending h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(
+        3rem,
+        7vw,
+        7rem
+    );
+
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.05em;
+}
+
+
+.ending-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.3);
+
+    margin: 60px auto;
+}
+
+
+.ending h3 {
+
+    font-size: clamp(
+        1.5rem,
+        3vw,
+        3rem
+    );
+
+    font-weight: 300;
+
+    letter-spacing: -0.03em;
+}
+
+
+.ending-description {
+
+    margin-top: 35px;
+
+    font-size: 1rem;
+
+    line-height: 2;
+
+    color: rgba(255,255,255,0.4);
+}
+
+
+
+/* ==================================================
+   MAKING OF
+================================================== */
+
+.making {
+
+    width: 100vw;
+
+    min-height: 100vh;
+
+    background: #e9e6de;
+
+    color: #171717;
+
+    padding:
+        12vw
+        8vw;
+}
+
+
+.making-container {
+
+    max-width: 1400px;
+
     margin: 0 auto;
 }
 
-#banner {
-    width: 800px;
-    height: 100px;
-    background-color: beige;
-    opacity:0.7;
-    clear:both;
-    position:fixed;
+
+.making-header {
+
+    margin-bottom: 100px;
 }
 
-#banner-placeholder{
-    height: 100px;
+
+.making-header .eyebrow {
+
+    color: #777;
+
+    margin-bottom: 25px;
 }
 
-#nav {
-    width: 100px;
-    /* height: 200px; */
-    /* background-color:lightgray; */
-    /* float:left; */
-    position:fixed;
+
+.making-header h2 {
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: clamp(
+        3.5rem,
+        8vw,
+        9rem
+    );
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.06em;
 }
 
-ul{
-    padding-left: 0;
-}
-li{
-    display:block;
-    text-align: center;
-    margin-bottom: 5px;
-    background-color:lightgray;
+
+
+/* ==================================================
+   MAKING GRID
+================================================== */
+
+.making-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 70px 100px;
 }
 
-li:hover{
-    background-color:pink;
-}
-ul a{
-    text-decoration: none;
+
+.making-item {
+
+    border-top:
+        1px solid
+        rgba(0,0,0,0.25);
+
+    padding-top: 25px;
 }
 
-#nav-placeholder{
-    width:100px;
-    float:left;
-}
-#content {
-    width: 600px;
-    float:left;
-}
-#supporting {
-    width: 100px;
-    height: 150px;
-    background-color:pink;
-    float:left;
-}
-#footer {
-    width: 800px;
-    height: 50px;
-    background-color:gray;
-    clear:both;
+
+.making-number {
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.2em;
+
+    color: #888;
 }
 
-.container {
-  overflow: hidden; /* Clear floats */
+
+.making-item h3 {
+
+    margin-top: 20px;
+
+    font-size: 1.2rem;
+
+    letter-spacing: 0.08em;
+
+    font-weight: 500;
 }
 
-section{
-    height:100vh;
-    /* scroll-margin-top: 100px;  */
+
+.making-item p {
+
+    margin-top: 20px;
+
+    max-width: 500px;
+
+    font-size: 0.95rem;
+
+    line-height: 2;
+
+    color: #5c5a55;
 }
 
-.text-container{
-    padding: 5px;
+
+
+/* ==================================================
+   TOOL INFO
+================================================== */
+
+.tool-info {
+
+    margin-top: 120px;
+
+    padding-top: 40px;
+
+    border-top:
+        1px solid
+        rgba(0,0,0,0.25);
+
+    max-width: 600px;
+}
+
+
+.tool-info p:first-child {
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.2em;
+
+    color: #888;
+}
+
+
+.tool-info h3 {
+
+    margin-top: 15px;
+
+    font-family:
+        "Playfair Display",
+        Georgia,
+        serif;
+
+    font-size: 2.5rem;
+
+    font-weight: 400;
+}
+
+
+.tool-info p:last-child {
+
+    margin-top: 20px;
+
+    font-size: 0.9rem;
+
+    line-height: 1.8;
+
+    color: #666;
+}
+
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+
+    margin-top: 150px;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid
+        rgba(0,0,0,0.2);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.08em;
+
+    color: #777;
+}
+
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 1000px) {
+
+    .visual {
+
+        width: 50vw;
+
+    }
+
+    .story-text {
+
+        width: 50vw;
+
+    }
+
+    .chapter {
+
+        padding:
+            8vw
+            6vw;
+
+    }
+
+}
+
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 768px) {
+
+
+    /* HERO */
+
+    .hero h1 {
+
+        font-size:
+            clamp(
+                4rem,
+                20vw,
+                7rem
+            );
+
+    }
+
+
+    .hero-subtitle {
+
+        font-size: 0.9rem;
+
+        letter-spacing: 0.08em;
+
+    }
+
+
+
+    /* STORY */
+
+    .story {
+
+        display: block;
+
+    }
+
+
+    .visual {
+
+        width: 100vw;
+
+        height: 60vh;
+
+        position: sticky;
+
+        top: 0;
+
+        z-index: 1;
+
+    }
+
+
+    .story-text {
+
+        width: 100vw;
+
+        position: relative;
+
+        z-index: 2;
+
+    }
+
+
+    .chapter {
+
+        min-height: 80vh;
+
+        padding:
+            25vw
+            10vw;
+
+        background: #151515;
+
+    }
+
+
+    .chapter h2 {
+
+        font-size:
+            clamp(
+                3rem,
+                13vw,
+                5rem
+            );
+
+    }
+
+
+    .chapter-main {
+
+        font-size: 1.2rem;
+
+    }
+
 }

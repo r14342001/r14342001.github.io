@@ -1,75 +1,99 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 
 <head>
-    <title>My first Hand-Made Webpage</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>JUST CHECKING — 60 Seconds of Attention</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;500&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
-    <div id="banner"><h1>Here is Banner</h1></div>
-    <div id="nav">
-        <ul>
-            <li><a href="#scene01">Scene01</a></li>
-            <li><a href="#scene02">Scene02</a></li>
-            <li><a href="#scene03">Scene03</a></li>
-            <li><a href="#scene04">Scene04</a></li>
-        </ul>
-    </div>
-    <div id="content">
-        <section id="scene01"><h1>Scene01</h1></section>
-        <section id="scene02"><h1>Scene02</h1></section>
-        <section id="scene03"><h1>Scene03</h1></section>
-        <section id="scene04"><h1>Scene04</h1></section>
-    </div>
-    <div id="supporting"><h1>Information</h1></div>
-    <div id="footer"><h1>Here is footer</h1></div>
 
-    <div id="wrapper">
-    <div id="banner">
-        <div class="text-container">
-            <h1>Here is Banner</h1>
+
+    <!-- ==========================================
+         HERO
+         網頁首頁
+    =========================================== -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                A VISUAL STORY ABOUT ATTENTION
+            </p>
+
+            <h1>
+                JUST<br>
+                CHECKING
+            </h1>
+
+            <p class="hero-subtitle">
+                60 Seconds of Attention
+            </p>
+
         </div>
-    </div>
-    <div id="banner-placeholder">
-        <!-- Empty for placeholder -->
-    </div>
-    <div class="container">
-        <div id="nav">
-            <div class="text-container">
-                <ul>
-                    <li><a href="#scene01">Scene01</a></li>
-                    <li><a href="#scene02">Scene02</a></li>
-                    <li><a href="#scene03">Scene03</a></li>
-                    <li><a href="#scene04">Scene04</a></li>
-                </ul>
+
+
+        <div class="scroll-hint">
+            <span>SCROLL</span>
+            <span class="arrow">↓</span>
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         STORY
+         四個故事段落
+    =========================================== -->
+
+    <main class="story">
+
+
+        <!-- ======================================
+             左側固定圖片
+        ======================================= -->
+
+        <div class="visual">
+
+            <div class="image-wrapper">
+
+                <img
+                    id="storyImage"
+                    src="images/phone-01.jpg"
+                    alt="手機放在桌上"
+                >
+
             </div>
-        </div>
-        <div id="nav-placeholder">&nbsp;</div>
-        <div id="content">
-            <div class="text-container">
-                <section id="scene01">
-                    <h1>Scene01</h1>
-                </section>
-                <section id="scene02">
-                    <h1>Scene02</h1>
-                </section>
-                <section id="scene03">
-                    <h1>Scene03</h1>
-                </section>
-                <section id="scene04">
-                    <h1>Scene04</h1>
-                </section>
+
+
+            <!-- 圖片上的小標記 -->
+
+            <div class="image-label">
+                <span id="sceneNumber">01</span>
+                <span>ATTENTION</span>
             </div>
-        </div>
-        <div id="supporting">
-            <div class="text-container">Information</div>
-        </div>
-    </div>
-    <div id="footer">Here is footer</div>
-</div>
 
-</body>
+        </div>
 
-</html>
+
+
+        <!-- ======================================
+```
