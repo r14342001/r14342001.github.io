@@ -1,99 +1,102 @@
-```html
 <!DOCTYPE html>
 <html lang="zh-Hant">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>JUST CHECKING — 60 Seconds of Attention</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;500&display=swap"
-          rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JUST CHECKING — 60 Seconds of Attention</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">A VISUAL STORY ABOUT ATTENTION</p>
+      <h1>JUST<br>CHECKING</h1>
+      <p class="hero-subtitle">60 Seconds of Attention</p>
+    </div>
+    <div class="scroll-hint"><span>SCROLL</span><span class="arrow">↓</span></div>
+  </header>
 
+  <main class="story">
+    <div class="visual">
+      <div class="image-wrapper">
+        <img id="storyImage" src="image01.jpg" alt="手機放在桌上">
+      </div>
+      <div class="image-label"><span id="sceneNumber">01</span><span>ATTENTION</span></div>
+    </div>
 
-    <!-- ==========================================
-         HERO
-         網頁首頁
-    =========================================== -->
+    <div class="story-text">
+      <section class="chapter" data-image="image01.jpg" data-number="01">
+        <p class="chapter-number">01 / NOTIFICATION</p>
+        <h2>叮。</h2>
+        <p>只是收到一則通知。<br>你拿起手機。</p>
+      </section>
 
-    <header class="hero">
+      <section class="chapter" data-image="image02.jpg" data-number="02">
+        <p class="chapter-number">02 / JUST CHECKING</p>
+        <h2>只是看一下。</h2>
+        <p>你原本沒有打算留下來。<br>但你已經打開了第一個 App。</p>
+      </section>
 
-        <div class="hero-content">
+      <section class="chapter" data-image="image03.png" data-number="03">
+        <p class="chapter-number">03 / ONE MORE</p>
+        <h2>再滑一下。</h2>
+        <p>一個影片。一則新聞。一個推薦。<br>下一個。下一個。下一個。</p>
+      </section>
 
-            <p class="eyebrow">
-                A VISUAL STORY ABOUT ATTENTION
-            </p>
+      <section class="chapter" data-image="image04.jpeg" data-number="04">
+        <p class="chapter-number">04 / ONE MINUTE LATER</p>
+        <h2>一分鐘後。</h2>
+        <p>你還在滑。<br>但你已經忘了，自己原本要做什麼。</p>
+      </section>
+    </div>
+  </main>
 
-            <h1>
-                JUST<br>
-                CHECKING
-            </h1>
+  <section class="ending">
+    <div class="ending-content">
+      <p class="eyebrow">THE END OF THE SCROLL</p>
+      <h2>你以為你在使用手機。<br>但手機也在使用你。</h2>
+      <p>你的注意力，是它最想留下的東西。</p>
+    </div>
+  </section>
 
-            <p class="hero-subtitle">
-                60 Seconds of Attention
-            </p>
+  <section class="making-of">
+    <div class="making-inner">
+      <p class="chapter-number">MAKING OF</p>
+      <h2>How this story was made</h2>
+      <div class="making-grid">
+        <div><strong>01 / CONCEPT</strong><p>以一則手機通知作為故事起點，描述人在短時間內從查看通知、開始滑動，到逐漸失去時間感的過程。</p></div>
+        <div><strong>02 / AI IMAGE</strong><p>使用 Nano Banana 生成連續的視覺敘事圖片，以相同手機、人物與空間維持一致。</p></div>
+        <div><strong>03 / PROMPT</strong><p>固定攝影風格、色彩、手機與空間，每次只改變故事情境，維持視覺一致。</p></div>
+        <div><strong>04 / WEB</strong><p>使用 HTML、CSS 與 JavaScript，透過 position: sticky 固定影像，再搭配滾動文字切換畫面。</p></div>
+      </div>
+    </div>
+  </section>
 
-        </div>
+  <script>
+    const image = document.getElementById('storyImage');
+    const number = document.getElementById('sceneNumber');
+    const chapters = document.querySelectorAll('.chapter');
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const src = entry.target.dataset.image;
+        const scene = entry.target.dataset.number;
+        if (image.getAttribute('src') === src) return;
 
-        <div class="scroll-hint">
-            <span>SCROLL</span>
-            <span class="arrow">↓</span>
-        </div>
+        image.classList.add('changing');
+        setTimeout(() => {
+          image.src = src;
+          number.textContent = scene;
+          image.onload = () => image.classList.remove('changing');
+        }, 250);
+      });
+    }, { threshold: 0.55 });
 
-    </header>
-
-
-
-    <!-- ==========================================
-         STORY
-         四個故事段落
-    =========================================== -->
-
-    <main class="story">
-
-
-        <!-- ======================================
-             左側固定圖片
-        ======================================= -->
-
-        <div class="visual">
-
-            <div class="image-wrapper">
-
-                <img
-                    id="storyImage"
-                    src="images/phone-01.jpg"
-                    alt="手機放在桌上"
-                >
-
-            </div>
-
-
-            <!-- 圖片上的小標記 -->
-
-            <div class="image-label">
-                <span id="sceneNumber">01</span>
-                <span>ATTENTION</span>
-            </div>
-
-        </div>
-
-
-
-        <!-- ======================================
-```
+    chapters.forEach(chapter => observer.observe(chapter));
+  </script>
+</body>
+</html>
