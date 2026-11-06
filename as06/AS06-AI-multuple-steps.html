@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>五個色塊頁面</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+  body { position: relative; }
+  /* 隱形吸附點:第三頁(200vh)比視窗高,所以內部可以自由捲動 */
+  .snaps { position: absolute; inset: 0; pointer-events: none; }
+  .snaps i { position: absolute; left: 0; width: 1px; scroll-snap-align: start; scroll-snap-stop: always; }
+  .snaps .s1 { top: 0; height: 100vh; }
+  .snaps .s2 { top: 100vh; height: 100vh; }
+  .snaps .s3 { top: 200vh; height: 200vh; scroll-snap-stop: normal; }
+  .snaps .s4 { top: 400vh; height: 100vh; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    color: #fff;
+  }
+  .page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .title { font-size: clamp(32px, 6vw, 64px); font-weight: 700; }
+  .sub { font-size: 16px; font-weight: 400; margin-top: 16px; }
+
+  .p1 { background: #ff4d1c; }   /* 橘紅色 */
+  .p2 { background: #8e6aa8; }   /* 紫芋色 */
+  .p3a { background: #6b7a1f; }  /* 橄欖綠 */
+  .p3b { background: #3d4f46; }  /* 深灰綠 */
+  .p4 { background: #b026ff; position: relative; z-index: 2; } /* 亮紫色 */
+
+  /* 第三頁：200vh，捲到底後固定，讓第四頁滑上來蓋住 */
+  .p3 { position: sticky; top: -100vh; z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="snaps" aria-hidden="true"><i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="s4"></i></div>
+  <div class="page p1"><div class="title">第一頁</div></div>
+  <div class="page p2"><div class="title">第二頁</div></div>
+
+  <section class="p3">
+    <div class="page p3a">
+      <div class="title big">第三頁：上半部</div>
+      <div class="sub">這一頁高200vh，往下正常捲動。</div>
+    </div>
+    <div class="page p3b">
+      <div class="title big">第三頁：下半部</div>
+      <div class="sub">捲到底後，再往下捲，滑入第四頁。</div>
+    </div>
+  </section>
+
+  <div class="page p4"><div class="title">第四頁</div></div>
+</body>
+</html>
