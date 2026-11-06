@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>四頁・五個色塊</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Microsoft JhengHei", sans-serif; color: #fff; }
+    nav { position: fixed; z-index: 20; top: 20px; right: 20px; display: flex; gap: 8px; padding: 8px; border: 1px solid #ffffff50; border-radius: 999px; background: #1016218c; backdrop-filter: blur(12px); }
+    nav a { color: #fff; text-decoration: none; font-size: 13px; padding: 8px 12px; border-radius: 999px; transition: background .2s; }
+    nav a:hover, nav a:focus-visible { background: #ffffff35; outline: none; }
+    .page { min-height: 100svh; position: relative; display: grid; place-items: center; }
+    .page-label { text-align: center; font-size: clamp(48px, 9vw, 112px); font-weight: 800; letter-spacing: .08em; text-shadow: 0 6px 30px #00000020; }
+    .page-label small { display: block; margin-top: 12px; font-size: clamp(13px, 1.6vw, 18px); font-weight: 500; letter-spacing: .2em; opacity: .86; }
+    .one { background: #d96570; }
+    .two { background: #e4a352; }
+    .third { position: relative; }
+    .third .block { min-height: 100svh; display: grid; place-items: center; }
+    .third .block-a { background: #54a7a2; }
+    .third .block-b { background: #5975b5; }
+    .third .page-label { position: sticky; top: calc(50svh - 75px); z-index: 2; height: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; transform: translateY(0); }
+    .third .block-note { font-size: 14px; letter-spacing: .18em; opacity: .65; align-self: end; margin-bottom: 44px; }
+    .four { background: #8c6db4; }
+    @media (max-width: 600px) { nav { top: 12px; right: 12px; left: 12px; justify-content: space-around; } nav a { font-size: 12px; padding: 8px 9px; } }
+  </style>
+</head>
+<body>
+  <nav aria-label="頁面導覽">
+    <a href="#page-1">第一頁</a><a href="#page-2">第二頁</a><a href="#page-3">第三頁</a><a href="#page-4">第四頁</a>
+  </nav>
+  <main>
+    <section class="page one" id="page-1" aria-label="第一頁，第一個色塊"><div class="page-label">第一頁<small>色塊 01</small></div></section>
+    <section class="page two" id="page-2" aria-label="第二頁，第二個色塊"><div class="page-label">第二頁<small>色塊 02</small></div></section>
+    <section class="third" id="page-3" aria-label="第三頁，由第三和第四個色塊組成">
+      <div class="page-label">第三頁<small>色塊 03 ＋ 色塊 04</small></div>
+      <div class="block block-a"><span class="block-note">色塊 03</span></div>
+      <div class="block block-b"><span class="block-note">色塊 04</span></div>
+    </section>
+    <section class="page four" id="page-4" aria-label="第四頁，第五個色塊"><div class="page-label">第四頁<small>色塊 05</small></div></section>
+  </main>
+</body>
+</html>
